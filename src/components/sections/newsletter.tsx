@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import { useEffect } from "react";
 import { useLanguage } from '@/contexts/language-context';
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,7 @@ import SectionWrapper from '../shared/section-wrapper';
 const NewsletterSection = () => {
   const { newsletter } = useLanguage().translations;
   const { toast } = useToast();
-  const [state, formAction] = useFormState(subscribeToNewsletter, { message: "", errors: {}, success: false });
+  const [state, formAction] = useActionState(subscribeToNewsletter, { message: "", errors: {}, success: false });
 
   useEffect(() => {
     if (state.success) {

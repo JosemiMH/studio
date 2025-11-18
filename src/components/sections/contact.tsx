@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,7 +29,7 @@ const ContactSection = () => {
     privacyConsent: z.literal(true),
   });
   
-  const [state, formAction] = useFormState(submitContactForm, { message: "", errors: {}, success: false });
+  const [state, formAction] = useActionState(submitContactForm, { message: "", errors: {}, success: false });
 
   const form = useForm<z.infer<typeof ContactFormSchema>>({
     resolver: zodResolver(ContactFormSchema),
