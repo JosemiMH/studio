@@ -288,13 +288,19 @@ const processData = (lang: Language) => ({
     services: services.map(s => ({...s, title: s.title[lang], features: s.features[lang]})),
     portfolio: portfolio.map(p => ({...p, title: p.title[lang], description: p.description[lang], results: p.results[lang]})),
     testimonials: testimonials.map(t => ({...t, company: t.company[lang], quote: t.quote[lang]})),
-    blog: blog.map(b => ({...b, category: b.category[lang], title: b.title[lang], excerpt: b.excerpt[lang]})),
+    blog: blog.map(b => ({...b, category: b.category[lang], title: b.title[lang], excerpt: b.excerpt[lang], readingTime: b.readingTime[lang]})),
     linkedin: {
-        ...linkedin,
         title: linkedin.title[lang],
         location: linkedin.location[lang],
-        experience: linkedin.experience.map(e => ({...e, title: e.title[lang], company: e.company[lang], period: e.period[lang]})),
-        education: linkedin.education.map(e => ({...e, degree: e.degree[lang], school: e.school[lang]})),
+        experience: linkedin.experience.map(e => ({
+            title: e.title[lang],
+            company: e.company[lang],
+            period: e.period[lang]
+        })),
+        education: linkedin.education.map(e => ({
+            degree: e.degree[lang],
+            school: e.school[lang]
+        })),
         skills: linkedin.skills[lang]
     },
     resources: resources.map(r => ({...r, title: r.title[lang]}))

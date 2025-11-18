@@ -16,7 +16,8 @@ import AppointmentBooking from './appointment-booking';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { t, nav } = useLanguage().translations;
+  const { translations } = useLanguage();
+  const { nav, hero } = translations;
 
   const navItems = [
     { href: '#about', label: nav.about },
@@ -78,7 +79,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-2">
             <LanguageSwitcher />
             <AppointmentBooking trigger={
-                <Button size="sm">{t('hero.cta_contact')}</Button>
+                <Button size="sm">{hero.cta_contact}</Button>
             } />
           </div>
 
@@ -115,7 +116,7 @@ const Header = () => {
                   </nav>
                    <div className="p-4 border-t">
                      <AppointmentBooking trigger={
-                        <Button className="w-full">{t('hero.cta_contact')}</Button>
+                        <Button className="w-full">{hero.cta_contact}</Button>
                      }/>
                     </div>
                 </div>
