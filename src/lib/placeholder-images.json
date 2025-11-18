@@ -1,3 +1,106 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "eva-profile",
+      "description": "Professional profile picture of Eva Pérez",
+      "imageUrl": "https://images.unsplash.com/photo-1544168190-79c17527004f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cHJvZmVzc2lvbmFsJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYzMzk4MzI2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional portrait"
+    },
+    {
+      "id": "eva-conference",
+      "description": "Eva Pérez speaking at a conference",
+      "imageUrl": "https://images.unsplash.com/photo-1725555946744-37906174e061?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3b21hbiUyMGNvbmZlcmVuY2V8ZW58MHx8fHwxNzYzNTA5MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman conference"
+    },
+    {
+      "id": "hero-es",
+      "description": "Hero image for the Spanish version of the website",
+      "imageUrl": "https://images.unsplash.com/photo-1518860308377-800f02d5498a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsdXh1cnklMjBzcGF8ZW58MHx8fHwxNzYzNDEyODY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury spa"
+    },
+    {
+      "id": "hero-en",
+      "description": "Hero image for the English version of the website",
+      "imageUrl": "https://images.unsplash.com/photo-1761926488116-9a5040fb1384?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3ZWxsbmVzcyUyMHJlc29ydHxlbnwwfHx8fDE3NjM1MDkyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wellness resort"
+    },
+    {
+      "id": "portfolio-1",
+      "description": "Luxury hotel project image",
+      "imageUrl": "https://images.unsplash.com/photo-1551918120-9739cb430c6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsdXh1cnklMjBob3RlbHxlbnwwfHx8fDE3NjM1MDkyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury hotel"
+    },
+    {
+      "id": "portfolio-2",
+      "description": "Urban spa project image",
+      "imageUrl": "https://images.unsplash.com/photo-1671763903993-39702e43f5d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dXJiYW4lMjBzcGF8ZW58MHx8fHwxNzYzNTA5MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "urban spa"
+    },
+    {
+      "id": "portfolio-3",
+      "description": "Resort project image",
+      "imageUrl": "https://images.unsplash.com/photo-1617859047452-8510bcf207fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxiZWFjaCUyMHJlc29ydHxlbnwwfHx8fDE3NjM0ODQwMjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beach resort"
+    },
+    {
+      "id": "portfolio-4",
+      "description": "Wellness center project image",
+      "imageUrl": "https://images.unsplash.com/photo-1758813264940-e938213604de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3ZWxsbmVzcyUyMGNlbnRlcnxlbnwwfHx8fDE3NjM1MDkyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wellness center"
+    },
+    {
+      "id": "portfolio-5",
+      "description": "Another luxury hotel project",
+      "imageUrl": "https://images.unsplash.com/photo-1546967900-1bea5f16b69d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxob3RlbCUyMGludGVyaW9yfGVufDB8fHx8MTc2MzQ0NjY5MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hotel interior"
+    },
+    {
+      "id": "portfolio-6",
+      "description": "Spa detail project image",
+      "imageUrl": "https://images.unsplash.com/photo-1675149532335-26b615b2b8f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzcGElMjBkZXRhaWx8ZW58MHx8fHwxNzYzNTA5MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "spa detail"
+    },
+    {
+      "id": "testimonial-1",
+      "description": "Client photo for testimonial",
+      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxidXNpbmVzcyUyMHBlcnNvbnxlbnwwfHx8fDE3NjM0NDgzODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business person"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "Client photo for testimonial",
+      "imageUrl": "https://images.unsplash.com/photo-1710687141443-698bb29672c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxob3RlbCUyMG1hbmFnZXJ8ZW58MHx8fHwxNzYzNTA5MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hotel manager"
+    },
+    {
+      "id": "testimonial-3",
+      "description": "Client photo for testimonial",
+      "imageUrl": "https://images.unsplash.com/photo-1573497019236-17f8177b81e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjB3b21hbnxlbnwwfHx8fDE3NjM0MzM5MzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional woman"
+    },
+    {
+      "id": "blog-1",
+      "description": "Image for blog post about KPIs",
+      "imageUrl": "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxidXNpbmVzcyUyMGFuYWx5dGljc3xlbnwwfHx8fDE3NjM0NjcyMzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business analytics"
+    },
+    {
+      "id": "blog-2",
+      "description": "Image for blog post about Revenue Management",
+      "imageUrl": "https://images.unsplash.com/photo-1462899006636-339e08d1844e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmaW5hbmNpYWwlMjBncm93dGh8ZW58MHx8fHwxNzYzNDk0ODcxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "financial growth"
+    },
+    {
+      "id": "blog-3",
+      "description": "Image for blog post about wellness trends",
+      "imageUrl": "https://images.unsplash.com/photo-1740138160889-29d711607d71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtb2Rlcm4lMjB3ZWxsbmVzc3xlbnwwfHx8fDE3NjM1MDkyNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern wellness"
+    },
+    {
+      "id": "blog-4",
+      "description": "Image for blog post about memorable experiences",
+      "imageUrl": "https://images.unsplash.com/photo-1556740758-90de374c12ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjdXN0b21lciUyMGV4cGVyaWVuY2V8ZW58MHx8fHwxNzYzNTA5MjQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "customer experience"
+    }
+  ]
 }
