@@ -11,7 +11,8 @@ import SectionWrapper from '../shared/section-wrapper';
 import { Clock } from 'lucide-react';
 
 const BlogSection = () => {
-  const { blog } = useLanguage().translations;
+  const { translations, language } = useLanguage();
+  const { blog } = translations;
 
   return (
     <SectionWrapper id="blog" className="py-24 sm:py-32">
@@ -44,7 +45,7 @@ const BlogSection = () => {
                 <CardContent className="p-6 flex-grow">
                   <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
                     <Badge variant="secondary">{post.category}</Badge>
-                    <span>{new Date(post.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    <span>{new Date(post.date).toLocaleDateString(language, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                   </div>
                   <h3 className="mt-2 font-headline text-xl font-semibold text-foreground">{post.title}</h3>
                   <p className="mt-3 text-sm text-muted-foreground">{post.excerpt}</p>
