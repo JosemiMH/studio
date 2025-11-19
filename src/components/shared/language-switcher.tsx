@@ -9,9 +9,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Menu } from 'lucide-react';
 
 const LanguageSwitcher = () => {
-  const { language, setLanguage } = useLanguage();
+  const { setLanguage } = useLanguage();
 
   const SpainFlag = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 3" className={className}>
@@ -38,7 +39,7 @@ const LanguageSwitcher = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
-          {language === 'es' ? <SpainFlag className={flagClassName} /> : <UKFlag className={flagClassName} />}
+          <Menu className="h-6 w-6" />
           <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>
