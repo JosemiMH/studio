@@ -1,13 +1,54 @@
+'use client';
+
+import { useLanguage } from '@/contexts/language-context';
+import { translations } from '@/lib/translations';
+import { TranslationsProvider, useTranslations } from '@/contexts/translations-context';
+
+import Header from '@/components/shared/header';
+import HeroSection from '@/components/sections/hero';
+import AboutSection from '@/components/sections/about';
+import ServicesSection from '@/components/sections/services';
+import AiWellnessSection from '@/components/sections/ai-wellness';
+import CtaSection from '@/components/sections/cta';
+import PortfolioSection from '@/components/sections/portfolio';
+import TestimonialsSection from '@/components/sections/testimonials';
+import BlogSection from '@/components/sections/blog';
+import LinkedInSection from '@/components/sections/linkedin';
+import ResourcesSection from '@/components/sections/resources';
+import ContactSection from '@/components/sections/contact';
+import NewsletterSection from '@/components/sections/newsletter';
+import Footer from '@/components/shared/footer';
+import Chatbot from '@/components/shared/chatbot';
+import CookieConsentBanner from '@/components/shared/cookie-consent-banner';
+import ScrollToTopButton from '@/components/shared/scroll-to-top';
 
 export default function Home() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
+    <TranslationsProvider translations={t}>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <ServicesSection translations={t.services} />
+          <AiWellnessSection translations={t.ai_wellness} />
+          <CtaSection translations={t.cta_section} />
+          <PortfolioSection translations={t.portfolio} />
+          <TestimonialsSection translations={t.testimonials} />
+          <BlogSection />
+          <LinkedInSection />
+          <ResourcesSection translations={t.resources} />
+          <ContactSection />
+          <NewsletterSection />
+        </main>
+        <Footer />
+        <Chatbot />
+        <CookieConsentBanner />
+        <ScrollToTopButton />
       </div>
-    </main>
+    </TranslationsProvider>
   );
 }

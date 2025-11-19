@@ -15,7 +15,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>('es');
+  const [language, setLanguageState] = useState<Language>('es'); 
   const router = useRouter();
 
   useEffect(() => {
@@ -23,10 +23,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     if (storedLanguage && ['en', 'es'].includes(storedLanguage)) {
       setLanguageState(storedLanguage);
     } else {
-      const browserLanguage = navigator.language.split('-')[0];
-      const lang = browserLanguage === 'es' ? 'es' : 'en';
-      setLanguageState(lang);
-      setCookie('language', lang, { path: '/' });
+      // Only access navigator on the client side
+      if (typeof window !== 'undefined') {
+        const browserLanguage = navigator.language.split('-')[0];
+        const lang = browserLanguage === 'es' ? 'es' : 'en';
+        setLanguageState(lang);
+        setCookie('language', lang, { path: '/' });
+      }
     }
   }, []);
 

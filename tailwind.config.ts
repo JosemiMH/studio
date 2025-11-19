@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+const { fontFamily } = require("tailwindcss/defaultTheme")
 
 const config = {
   darkMode: ["class"],
@@ -18,6 +19,11 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        poppins: ["var(--font-poppins)", ...fontFamily.sans],
+        headline: ["var(--font-playfair)", ...fontFamily.serif],
+        cormorant: ["var(--font-cormorant)", ...fontFamily.serif],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -51,6 +57,26 @@ const config = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        turquoise: {
+          DEFAULT: "var(--turquoise)",
+          light: "var(--turquoise-light)",
+          dark: "var(--turquoise-dark)",
+        },
+        sage: {
+          DEFAULT: "var(--sage)",
+          light: "var(--sage-light)",
+          dark: "var(--sage-dark)",
+        },
+        gold: {
+          DEFAULT: "var(--gold)",
+          light: "var(--gold-light)",
+          dark: "var(--gold-dark)",
+        },
+        charcoal: {
+          DEFAULT: "var(--charcoal)",
+          light: "var(--charcoal-light)",
+          dark: "var(--charcoal-dark)",
         },
       },
       borderRadius: {

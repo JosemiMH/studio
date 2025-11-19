@@ -1,3 +1,118 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "eva-profile",
+      "description": "Professional headshot of Eva Pérez",
+      "imageUrl": "/images/eva-profile.jpg",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "eva-conference",
+      "description": "Eva Pérez speaking at a wellness conference",
+      "imageUrl": "/images/eva-conference.jpg",
+      "imageHint": "woman conference"
+    },
+    {
+      "id": "hero-es",
+      "description": "Luxury spa background for Spanish version",
+      "imageUrl": "/images/hero-es.jpg",
+      "imageHint": "luxury spa"
+    },
+    {
+      "id": "hero-en",
+      "description": "Luxury spa background for English version",
+      "imageUrl": "/images/hero-en.jpg",
+      "imageHint": "wellness background"
+    },
+    {
+      "id": "project-1",
+      "description": "Interior of a luxury hotel spa",
+      "imageUrl": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2940&auto=format&fit=crop",
+      "imageHint": "luxury hotel"
+    },
+    {
+      "id": "project-2",
+      "description": "Modern urban spa relaxation area",
+      "imageUrl": "https://images.unsplash.com/photo-1512290923902-8a9fde74e0e8?q=80&w=2874&auto=format&fit=crop",
+      "imageHint": "urban spa"
+    },
+    {
+      "id": "project-3",
+      "description": "Outdoor pool area at a luxury resort",
+      "imageUrl": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=2940&auto=format&fit=crop",
+      "imageHint": "resort pool"
+    },
+    {
+      "id": "project-4",
+      "description": "Yoga and wellness center interior",
+      "imageUrl": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=3020&auto=format&fit=crop",
+      "imageHint": "wellness center"
+    },
+    {
+      "id": "project-5",
+      "description": "Another luxury hotel project",
+      "imageUrl": "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=2940&auto=format&fit=crop",
+      "imageHint": "hotel project"
+    },
+    {
+      "id": "project-6",
+      "description": "A serene resort spa setting",
+      "imageUrl": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2940&auto=format&fit=crop",
+      "imageHint": "resort spa"
+    },
+    {
+      "id": "testimonial-1",
+      "description": "Client testimonial photo",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+      "imageHint": "man smiling"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "Client testimonial photo",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026706d",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "testimonial-3",
+      "description": "Client testimonial photo",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026707d",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "testimonial-4",
+      "description": "Client testimonial photo",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026708d",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "testimonial-5",
+      "description": "Client testimonial photo",
+      "imageUrl": "https://i.pravatar.cc/150?u=a042581f4e29026709d",
+      "imageHint": "smiling person"
+    },
+    {
+      "id": "blog-1",
+      "description": "KPI dashboard for a spa",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2940&auto=format&fit=crop",
+      "imageHint": "kpi dashboard"
+    },
+    {
+      "id": "blog-2",
+      "description": "Luxury wellness area with a focus on revenue",
+      "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2874&auto=format&fit=crop",
+      "imageHint": "wellness revenue"
+    },
+    {
+      "id": "blog-3",
+      "description": "New trends in luxury hotels",
+      "imageUrl": "https://images.unsplash.com/photo-1562778666-4ab73f43c386?q=80&w=2938&auto=format&fit=crop",
+      "imageHint": "luxury trends"
+    },
+    {
+      "id": "blog-4",
+      "description": "Memorable spa experience",
+      "imageUrl": "https://images.unsplash.com/photo-1599350415097-a6572744398f?q=80&w=2874&auto=format&fit=crop",
+      "imageHint": "spa experience"
+    }
+  ]
 }
