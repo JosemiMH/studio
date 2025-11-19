@@ -1,11 +1,23 @@
 import 'server-only';
-import { cookies } from 'next/headers';
+import { headers } from 'next/headers';
 import { translations, AllTranslations } from './translations';
 import { Language } from './data';
 
+export const getServerLanguage = (): Language => {
+  const headersList = headers();
+  const acceptLanguage = headersList.get('accept-language');
+
+  if (acceptLanguage) {
+    const browserLanguage = acceptLanguage.split(',')[0].split('-')[0];
+    if (browserLanguage === 'es') {
+      return 'es';
+    }
+  }
+
+  return 'en';
+};
+
 export const getTranslations = (): AllTranslations['es'] => {
-  const langCookie = cookies().get('language');
-  const lang: Language = langCookie?.value === 'en' ? 'en' : 'es';
-  // Fallback to Spanish if translations for the selected language are not available
+  const lang = getServerLanguage();
   return translations[lang] || translations['es'];
 };

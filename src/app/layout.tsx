@@ -3,7 +3,7 @@ import { Playfair_Display, Poppins, Cormorant_Garamond } from 'next/font/google'
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { LanguageProvider } from "@/contexts/language-context";
-import { getTranslations } from "@/lib/get-translations";
+import { getTranslations, getServerLanguage } from "@/lib/get-translations";
 import { TranslationsProvider } from "@/contexts/translations-context";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -38,10 +38,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const translations = getTranslations();
+  const initialLanguage = getServerLanguage();
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang={initialLanguage} suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background font-poppins antialiased", fontPoppins.variable, fontPlayfair.variable, fontCormorant.variable)}>
-        <LanguageProvider>
+        <LanguageProvider initialLanguage={initialLanguage}>
           <TranslationsProvider translations={translations}>
             {children}
             <Toaster />

@@ -1,9 +1,7 @@
 
 "use client";
 
-import React, { createContext, useState, useContext, useEffect, startTransition } from 'react';
-import { useRouter } from 'next/navigation';
-import { setCookie, getCookie } from 'cookies-next';
+import React, { createContext, useState, useContext } from 'react';
 
 export type Language = 'en' | 'es';
 
@@ -14,31 +12,16 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>('es'); 
-  const router = useRouter();
+interface LanguageProviderProps {
+  children: React.ReactNode;
+  initialLanguage: Language;
+}
 
-  useEffect(() => {
-    const storedLanguage = getCookie('language') as Language;
-    if (storedLanguage && ['en', 'es'].includes(storedLanguage)) {
-      setLanguageState(storedLanguage);
-    } else {
-      // Only access navigator on the client side
-      if (typeof window !== 'undefined') {
-        const browserLanguage = navigator.language.split('-')[0];
-        const lang = browserLanguage === 'es' ? 'es' : 'en';
-        setLanguageState(lang);
-        setCookie('language', lang, { path: '/' });
-      }
-    }
-  }, []);
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, initialLanguage }) => {
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    setCookie('language', lang, { path: '/' });
-    startTransition(() => {
-        router.refresh();
-    });
   };
 
   return (
