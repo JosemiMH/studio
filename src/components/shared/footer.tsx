@@ -27,7 +27,7 @@ const Footer = () => {
   const evaProfileImage = PlaceHolderImages.find(img => img.id === 'eva-profile');
 
   return (
-    <footer className="bg-background/70 border-t">
+    <footer className="bg-background border-t">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1 flex flex-col items-start">
@@ -47,6 +47,12 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-sm text-muted-foreground">{footer.tagline}</p>
+             <div className="flex mt-4">
+                <a href="https://www.linkedin.com/in/eva-perez-montes-20806b22/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                <Linkedin className="h-6 w-6" />
+                <span className="sr-only">LinkedIn</span>
+                </a>
+            </div>
           </div>
 
           <div>
@@ -75,11 +81,12 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div className="flex items-center md:justify-end mt-8 md:mt-0">
-            <a href="https://www.linkedin.com/in/eva-perez-montes-20806b22/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
-              <Linkedin className="h-6 w-6" />
-              <span className="sr-only">LinkedIn</span>
-            </a>
+          <div className="md:col-span-1">
+             <h3 className="font-semibold mb-4">Contacto</h3>
+             <p className="text-sm text-muted-foreground">
+                <a href="mailto:eperez@asetrabalnearios.com" className="hover:text-primary">eperez@asetrabalnearios.com</a>
+             </p>
+             <p className="text-sm text-muted-foreground">España</p>
           </div>
         </div>
 

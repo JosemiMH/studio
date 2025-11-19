@@ -2,6 +2,9 @@
 "use server";
 
 import { z } from "zod";
+import { addDocumentNonBlocking } from "@/firebase";
+import { collection, getFirestore }from "firebase/firestore";
+import { initializeFirebase } from "@/firebase";
 
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -24,10 +27,9 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     };
   }
 
-  // Here you would typically save to a database
-  // e.g., await db.insert(contacts).values(validatedFields.data);
-
-  console.log("Contact form submitted:", validatedFields.data);
+  const { firestore } = initializeFirebase();
+  const contactsCollection = collection(firestore, "contacts");
+  await addDocumentNonBlocking(contactsCollection, validatedFields.data);
 
   return {
     message: "Thank you for your message. We will get back to you shortly.",
@@ -50,10 +52,9 @@ export async function subscribeToNewsletter(prevState: any, formData: FormData) 
         };
     }
     
-    // Here you would typically save to a database
-    // e.g., await db.insert(newsletters).values(validatedFields.data);
-
-    console.log("Newsletter subscription:", validatedFields.data.email);
+    const { firestore } = initializeFirebase();
+    const newsletterCollection = collection(firestore, "newsletter_subscriptions");
+    await addDocumentNonBlocking(newsletterCollection, { email: validatedFields.data.email, subscribedAt: new Date() });
 
     return {
         message: "Thank you for subscribing to our newsletter!",
@@ -83,8 +84,9 @@ export async function bookAppointment(prevState: any, formData: FormData) {
         };
     }
 
-    // Here you would save the appointment to the database
-    console.log("New appointment booking:", validatedFields.data);
+    const { firestore } = initializeFirebase();
+    const appointmentsCollection = collection(firestore, "appointments");
+    await addDocumentNonBlocking(appointmentsCollection, { ...validatedFields.data, status: 'pending', createdAt: new Date() });
 
     return {
         message: "Your appointment request has been sent successfully. We will confirm shortly.",

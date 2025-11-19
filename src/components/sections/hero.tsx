@@ -32,7 +32,7 @@ const HeroSection = () => {
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
-       <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-secondary/20 to-transparent opacity-50" />
+       <div className="absolute inset-0 bg-gradient-to-r from-turquoise-dark/60 via-sage/40 to-transparent opacity-50" />
 
       <div className="relative z-10 flex h-full items-center">
         <div className="container mx-auto px-4 text-left">
@@ -41,10 +41,10 @@ const HeroSection = () => {
               <TrendingUp className="mr-2 h-4 w-4 text-accent" />
               {hero.stat}
             </div>
-            <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.3)'}}>
               {hero.title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-foreground/80">
+            <p className="mt-6 text-lg leading-8 text-foreground/80" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.2)'}}>
               {hero.subtitle}
             </p>
             <div className="mt-10 flex items-center gap-x-6">
