@@ -3,16 +3,10 @@
 
 import { useLanguage } from '@/contexts/language-context';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Menu } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const LanguageSwitcher = () => {
-  const { setLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   const SpainFlag = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 3" className={className}>
@@ -33,27 +27,29 @@ const LanguageSwitcher = () => {
     </svg>
   );
 
-  const flagClassName = "w-6 h-6 rounded-full object-cover";
+  const flagClassName = "w-5 h-5 rounded-full object-cover";
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <Menu className="h-6 w-6" />
-          <span className="sr-only">Change language</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setLanguage('es')} className="flex items-center gap-2 cursor-pointer">
-          <SpainFlag className={flagClassName} />
-          <span>Español</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLanguage('en')} className="flex items-center gap-2 cursor-pointer">
-          <UKFlag className={flagClassName} />
-          <span>English</span>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className="flex items-center gap-1">
+      <Button
+        variant={language === 'es' ? 'secondary' : 'ghost'}
+        size="icon"
+        onClick={() => setLanguage('es')}
+        className={cn('transition-all', language === 'es' ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : '')}
+      >
+        <SpainFlag className={flagClassName} />
+        <span className="sr-only">Español</span>
+      </Button>
+      <Button
+        variant={language === 'en' ? 'secondary' : 'ghost'}
+        size="icon"
+        onClick={() => setLanguage('en')}
+        className={cn('transition-all', language === 'en' ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : '')}
+      >
+        <UKFlag className={flagClassName} />
+        <span className="sr-only">English</span>
+      </Button>
+    </div>
   );
 };
 
