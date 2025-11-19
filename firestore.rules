@@ -1,0 +1,82 @@
+/**
+ * @fileoverview Firestore Security Rules for the Eva Pérez Wellness website.
+ *
+ * Core Philosophy:
+ * This ruleset prioritizes secure data handling while allowing for rapid prototyping.
+ * It allows open creation of contact submissions, newsletter subscriptions, and appointment bookings,
+ * but restricts read and write access to authorized users only. This approach enables easy data collection
+ * while protecting sensitive information from unauthorized access.
+ *
+ * Data Structure:
+ * The database consists of three top-level collections:
+ * - /contacts/{contactId}: Stores contact form submissions.
+ * - /newsletter_subscriptions/{subscriptionId}: Stores newsletter subscriptions.
+ * - /appointments/{appointmentId}: Stores appointment bookings.
+ *
+ * Key Security Decisions:
+ * - Public Creation: Allows anyone to create documents in the `contacts`,
+ *   `newsletter_subscriptions`, and `appointments` collections. This is suitable for contact
+ *   forms, newsletter sign-ups, and appointment bookings where open submission is required.
+ * - Restricted Access: `get`, `list`, `update`, and `delete` operations are denied
+ *   to all users. This ensures that only authorized backend processes can access or modify
+ *   the data.
+ *
+ * Denormalization for Authorization:
+ * This ruleset does not use denormalization, as all collections are designed for public
+ * creation with restricted read/write access. No ownership or role-based access control is implemented
+ * at the user level.
+ *
+ * Structural Segregation:
+ * Data with different access needs (public submission vs. private access) are stored in separate
+ * collections. This simplifies the rules and enhances security.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Rules for the /contacts collection.
+     * @path /contacts/{contactId}
+     * @allow (create) Any user can submit a contact form.
+     * @deny (get, list, update, delete) No user can read, list, update, or delete contact submissions through direct client access.
+     * @principle Allows public creation of contact submissions while restricting access to authorized users only.
+     */
+    match /contacts/{contactId} {
+      allow get: if false;
+      allow list: if false;
+      allow create: if true;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    /**
+     * @description Rules for the /newsletter_subscriptions collection.
+     * @path /newsletter_subscriptions/{subscriptionId}
+     * @allow (create) Any user can subscribe to the newsletter.
+     * @deny (get, list, update, delete) No user can read, list, update, or delete newsletter subscriptions through direct client access.
+     * @principle Allows public creation of newsletter subscriptions while restricting access to authorized users only.
+     */
+    match /newsletter_subscriptions/{subscriptionId} {
+      allow get: if false;
+      allow list: if false;
+      allow create: if true;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    /**
+     * @description Rules for the /appointments collection.
+     * @path /appointments/{appointmentId}
+     * @allow (create) Any user can book an appointment.
+     * @deny (get, list, update, delete) No user can read, list, update, or delete appointment bookings through direct client access.
+     * @principle Allows public creation of appointment bookings while restricting access to authorized users only.
+     */
+    match /appointments/{appointmentId} {
+      allow get: if false;
+      allow list: if false;
+      allow create: if true;
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}

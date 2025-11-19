@@ -1,0 +1,217 @@
+{
+  "entities": {
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user account.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the user."
+        },
+        "username": {
+          "type": "string",
+          "description": "The username of the user."
+        }
+      },
+      "required": [
+        "id",
+        "username"
+      ]
+    },
+    "Contact": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Contact",
+      "type": "object",
+      "description": "Represents a contact form submission.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the contact submission."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the person submitting the contact form."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person submitting the contact form.",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "The phone number of the person submitting the contact form."
+        },
+        "company": {
+          "type": "string",
+          "description": "The company of the person submitting the contact form."
+        },
+        "message": {
+          "type": "string",
+          "description": "The message from the contact form submission."
+        },
+        "privacyConsent": {
+          "type": "boolean",
+          "description": "Whether the person submitting the contact form has given their consent to the privacy policy."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "The timestamp when the contact form was submitted.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "message",
+        "privacyConsent"
+      ]
+    },
+    "NewsletterSubscription": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "NewsletterSubscription",
+      "type": "object",
+      "description": "Represents a newsletter subscription.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the newsletter subscription."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person subscribing to the newsletter.",
+          "format": "email"
+        },
+        "subscribedAt": {
+          "type": "string",
+          "description": "The timestamp when the person subscribed to the newsletter.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "email"
+      ]
+    },
+    "Appointment": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Appointment",
+      "type": "object",
+      "description": "Represents an appointment booking.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the appointment booking."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the person booking the appointment."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person booking the appointment.",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "The phone number of the person booking the appointment."
+        },
+        "date": {
+          "type": "string",
+          "description": "The date of the appointment.",
+          "format": "date"
+        },
+        "time": {
+          "type": "string",
+          "description": "The time of the appointment."
+        },
+        "service": {
+          "type": "string",
+          "description": "The service being booked for the appointment."
+        },
+        "message": {
+          "type": "string",
+          "description": "A message from the person booking the appointment."
+        },
+        "status": {
+          "type": "string",
+          "description": "The status of the appointment (e.g., pending, confirmed, cancelled)."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "The timestamp when the appointment was booked.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "date",
+        "time",
+        "service"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/contacts/{contactId}",
+        "definition": {
+          "entityName": "Contact",
+          "schema": {
+            "$ref": "#/backend/entities/Contact"
+          },
+          "description": "Stores contact form submissions. Allows creation by anyone, but restricts reading and modification to authorized users.",
+          "params": [
+            {
+              "name": "contactId",
+              "description": "Unique identifier for the contact submission."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/newsletter_subscriptions/{subscriptionId}",
+        "definition": {
+          "entityName": "NewsletterSubscription",
+          "schema": {
+            "$ref": "#/backend/entities/NewsletterSubscription"
+          },
+          "description": "Stores newsletter subscriptions. Allows creation by anyone, but restricts reading and modification to authorized users.",
+          "params": [
+            {
+              "name": "subscriptionId",
+              "description": "Unique identifier for the newsletter subscription."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/appointments/{appointmentId}",
+        "definition": {
+          "entityName": "Appointment",
+          "schema": {
+            "$ref": "#/backend/entities/Appointment"
+          },
+          "description": "Stores appointment bookings. Allows creation by anyone, but restricts reading and modification to authorized users.",
+          "params": [
+            {
+              "name": "appointmentId",
+              "description": "Unique identifier for the appointment booking."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "This Firestore structure is designed to support the Eva Pérez Wellness website. It focuses on simplicity, security, and scalability, adhering to the core design principles of Authorization Independence, Clarity of Intent, DBAC (Database-Based Access Control), QAPs (Rules are not Filters), and Invariants.\n\nAuthorization Independence is achieved by avoiding hierarchical authorization dependencies.  No `get()` calls are required in the security rules, because no subcollections depend on parent attributes for authorization. The structure uses path-based ownership where applicable.\n\nQAPs are supported by segregating data with different access needs into separate collections, ensuring that rules can be applied effectively without acting as filters. The structure leverages collections like `/contacts`, `/newsletter_subscriptions`, and `/appointments` to store data related to the respective forms and submissions. These collections are designed to allow public creation, but secure reading and modification, enforcing appropriate access control."
+  }
+}
