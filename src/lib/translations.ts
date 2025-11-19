@@ -21,7 +21,7 @@ const es = {
   },
   about: {
     title: "Sobre Eva Pérez",
-    subtitle: "SPA & Wellness Project Manager – Especialista en Optimización de Ingresos",
+    subtitle: "SPA & Wellness Project Manager – Revenue Optimization Specialist",
     p1: "Con más de 20 años de dedicación al sector wellness de lujo, he liderado la conceptualización, apertura y gestión de spas en prestigiosos hoteles a nivel internacional. Mi pasión es transformar áreas de bienestar en unidades de negocio rentables y memorables.",
     p2: "Mi enfoque se centra en la optimización de ingresos (Revenue Management), la formación de equipos de alto rendimiento y la creación de experiencias de cliente excepcionales. Soy una estratega que une la excelencia operativa con una visión de negocio innovadora.",
     stats: {
@@ -106,7 +106,7 @@ const es = {
       phone: "Teléfono",
       company: "Empresa",
       message: "Mensaje",
-      privacy_consent: "Acepto la política de privacidad y el tratamiento de mis datos.",
+      privacy_consent_text: "Acepto la",
       submit: "Enviar Mensaje",
       info_email: "eperez@asetrabalnearios.com",
       info_location: "España",
@@ -265,7 +265,7 @@ const en = {
       phone: "Phone",
       company: "Company",
       message: "Message",
-      privacy_consent: "I accept the privacy policy and the processing of my data.",
+      privacy_consent_text: "I accept the",
       submit: "Send Message",
       info_email: "eperez@asetrabalnearios.com",
       info_location: "Spain",

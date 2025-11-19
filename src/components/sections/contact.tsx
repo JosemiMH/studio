@@ -15,9 +15,10 @@ import SectionWrapper from '../shared/section-wrapper';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { submitContactForm } from "@/app/actions";
 import { useToast } from "@/hooks/use-toast";
+import Link from "next/link";
 
 const ContactSection = () => {
-  const { contact } = useLanguage().translations;
+  const { contact, footer } = useLanguage().translations;
   const { toast } = useToast();
 
   const ContactFormSchema = z.object({
@@ -26,7 +27,9 @@ const ContactSection = () => {
     phone: z.string().optional(),
     company: z.string().optional(),
     message: z.string().min(10),
-    privacyConsent: z.literal(true),
+    privacyConsent: z.literal(true, {
+        errorMap: () => ({ message: "You must accept the privacy policy" }),
+    }),
   });
   
   const [state, formAction] = useActionState(submitContactForm, { message: "", errors: {}, success: false });
@@ -100,7 +103,7 @@ const ContactSection = () => {
                 <Checkbox id="privacy" {...form.register("privacyConsent")} />
                 <div className="grid gap-1.5 leading-none">
                   <label htmlFor="privacy" className="text-sm text-muted-foreground">
-                   {contact.privacy_consent}
+                   {contact.privacy_consent_text} <Link href="/privacy-policy" className="underline">{footer.privacy_policy}</Link>.
                   </label>
                   {state.errors?.privacyConsent && <p className="text-sm text-destructive">{state.errors.privacyConsent[0]}</p>}
                 </div>
