@@ -50,7 +50,7 @@ const AppointmentBooking = ({ trigger }: { trigger: React.ReactNode }) => {
 
   const [state, formAction] = useActionState(bookAppointment, { message: "", errors: {}, success: false });
 
-  const form = useForm<z.infer<typeof AppointmentSchema>>({
+  const { register, handleSubmit, formState: { errors }, reset, setValue, watch } = useForm<z.infer<typeof AppointmentSchema>>({
     resolver: zodResolver(AppointmentSchema),
   });
 
@@ -61,7 +61,7 @@ const AppointmentBooking = ({ trigger }: { trigger: React.ReactNode }) => {
         description: appointment.success_message,
       });
       setIsOpen(false);
-      form.reset();
+      reset();
     } else if (state.message && Object.keys(state.errors ?? {}).length > 0) {
       toast({
         title: "Error",
@@ -69,7 +69,7 @@ const AppointmentBooking = ({ trigger }: { trigger: React.ReactNode }) => {
         variant: "destructive",
       });
     }
-  }, [state, toast, appointment.success_title, appointment.success_message, form]);
+  }, [state, toast, appointment.success_title, appointment.success_message, reset]);
 
   const onFormSubmit = (data: z.infer<typeof AppointmentSchema>) => {
     const formData = new FormData();
@@ -89,23 +89,23 @@ const AppointmentBooking = ({ trigger }: { trigger: React.ReactNode }) => {
       <DialogContent className="sm:max-w-[800px]">
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl">{appointment.title}</DialogTitle>
-          <DialogDescription>{appointment.success_message}</DialogDescription>
+          <DialogDescription>{appointment.subtitle}</DialogDescription>
         </DialogHeader>
-        <form onSubmit={form.handleSubmit(onFormSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
+        <form onSubmit={handleSubmit(onFormSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
             <div className="space-y-4">
                  <div>
-                    <Input {...form.register("name")} placeholder={appointment.name} />
-                    {form.formState.errors.name && <p className="text-sm text-destructive mt-1">{form.formState.errors.name.message}</p>}
+                    <Input {...register("name")} placeholder={appointment.name} />
+                    {errors.name && <p className="text-sm text-destructive mt-1">{errors.name.message}</p>}
                 </div>
                  <div>
-                    <Input {...form.register("email")} type="email" placeholder={appointment.email} />
-                     {form.formState.errors.email && <p className="text-sm text-destructive mt-1">{form.formState.errors.email.message}</p>}
+                    <Input {...register("email")} type="email" placeholder={appointment.email} />
+                     {errors.email && <p className="text-sm text-destructive mt-1">{errors.email.message}</p>}
                 </div>
                 <div>
-                    <Input {...form.register("phone")} placeholder={appointment.phone} />
+                    <Input {...register("phone")} placeholder={appointment.phone} />
                 </div>
                 <div>
-                     <Select onValueChange={(value) => form.setValue('service', value)}>
+                     <Select onValueChange={(value) => setValue('service', value)}>
                         <SelectTrigger>
                             <SelectValue placeholder={appointment.select_service} />
                         </SelectTrigger>
@@ -115,25 +115,25 @@ const AppointmentBooking = ({ trigger }: { trigger: React.ReactNode }) => {
                             ))}
                         </SelectContent>
                     </Select>
-                    {form.formState.errors.service && <p className="text-sm text-destructive mt-1">{form.formState.errors.service.message}</p>}
+                    {errors.service && <p className="text-sm text-destructive mt-1">{errors.service.message}</p>}
                 </div>
                  <div>
-                    <Textarea {...form.register("message")} placeholder={appointment.message} />
+                    <Textarea {...register("message")} placeholder={appointment.message} />
                 </div>
             </div>
              <div className="space-y-4">
                 <div>
                     <Calendar
                         mode="single"
-                        selected={form.watch("date")}
-                        onSelect={(date) => form.setValue('date', date as Date)}
-                        disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
+                        selected={watch("date")}
+                        onSelect={(date) => setValue('date', date as Date)}
+                        disabled={(date) => date < new Date(new Date().setHours(0,0,0,0))}
                         className="rounded-md border"
                     />
-                    {form.formState.errors.date && <p className="text-sm text-destructive mt-1">{form.formState.errors.date.message}</p>}
+                    {errors.date && <p className="text-sm text-destructive mt-1">{errors.date.message}</p>}
                 </div>
                  <div>
-                     <Select onValueChange={(value) => form.setValue('time', value)}>
+                     <Select onValueChange={(value) => setValue('time', value)}>
                         <SelectTrigger>
                             <SelectValue placeholder={appointment.select_time} />
                         </SelectTrigger>
@@ -143,7 +143,7 @@ const AppointmentBooking = ({ trigger }: { trigger: React.ReactNode }) => {
                             ))}
                         </SelectContent>
                     </Select>
-                    {form.formState.errors.time && <p className="text-sm text-destructive mt-1">{form.formState.errors.time.message}</p>}
+                    {errors.time && <p className="text-sm text-destructive mt-1">{errors.time.message}</p>}
                 </div>
             </div>
              <DialogFooter className="md:col-span-2">

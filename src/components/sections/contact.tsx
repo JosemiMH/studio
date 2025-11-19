@@ -34,7 +34,7 @@ const ContactSection = () => {
   
   const [state, formAction] = useActionState(submitContactForm, { message: "", errors: {}, success: false });
 
-  const form = useForm<z.infer<typeof ContactFormSchema>>({
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<z.infer<typeof ContactFormSchema>>({
     resolver: zodResolver(ContactFormSchema),
     defaultValues: {
       name: "",
@@ -52,7 +52,7 @@ const ContactSection = () => {
         title: "Success!",
         description: state.message,
       });
-      form.reset();
+      reset();
     } else if (state.message && Object.keys(state.errors ?? {}).length > 0) {
       toast({
         title: "Error",
@@ -60,7 +60,7 @@ const ContactSection = () => {
         variant: "destructive",
       });
     }
-  }, [state, toast, form]);
+  }, [state, toast, reset]);
 
   return (
     <SectionWrapper id="contact" className="bg-background/70 py-24 sm:py-32">
@@ -79,28 +79,28 @@ const ContactSection = () => {
             <form action={formAction} className="space-y-6">
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                    <Input {...form.register("name")} placeholder={contact.name} aria-label={contact.name}/>
+                    <Input {...register("name")} placeholder={contact.name} aria-label={contact.name}/>
                     {state.errors?.name && <p className="text-sm text-destructive mt-1">{state.errors.name[0]}</p>}
                 </div>
                  <div>
-                    <Input {...form.register("email")} type="email" placeholder={contact.email} aria-label={contact.email} />
+                    <Input {...register("email")} type="email" placeholder={contact.email} aria-label={contact.email} />
                     {state.errors?.email && <p className="text-sm text-destructive mt-1">{state.errors.email[0]}</p>}
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                    <Input {...form.register("phone")} placeholder={contact.phone} aria-label={contact.phone}/>
+                    <Input {...register("phone")} placeholder={contact.phone} aria-label={contact.phone}/>
                 </div>
                  <div>
-                    <Input {...form.register("company")} placeholder={contact.company} aria-label={contact.company}/>
+                    <Input {...register("company")} placeholder={contact.company} aria-label={contact.company}/>
                 </div>
               </div>
                <div>
-                <Textarea {...form.register("message")} placeholder={contact.message} rows={5} aria-label={contact.message}/>
+                <Textarea {...register("message")} placeholder={contact.message} rows={5} aria-label={contact.message}/>
                 {state.errors?.message && <p className="text-sm text-destructive mt-1">{state.errors.message[0]}</p>}
               </div>
               <div className="flex items-start space-x-2">
-                <Checkbox id="privacy" {...form.register("privacyConsent")} />
+                <Checkbox id="privacy" {...register("privacyConsent")} />
                 <div className="grid gap-1.5 leading-none">
                   <label htmlFor="privacy" className="text-sm text-muted-foreground">
                    {contact.privacy_consent_text} <Link href="/privacy-policy" className="underline">{footer.privacy_policy}</Link>.
