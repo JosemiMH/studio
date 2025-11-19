@@ -1,8 +1,9 @@
 
 "use client";
 
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { AllTranslations } from '@/lib/translations';
+import React, { createContext, useState, useContext, useEffect, startTransition } from 'react';
+import { useRouter } from 'next/navigation';
+import { setCookie, getCookie } from 'cookies-next';
 
 export type Language = 'en' | 'es';
 
@@ -15,22 +16,27 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>('es');
+  const router = useRouter();
 
   useEffect(() => {
-    const storedLanguage = localStorage.getItem('language') as Language;
+    const storedLanguage = getCookie('language') as Language;
     if (storedLanguage && ['en', 'es'].includes(storedLanguage)) {
       setLanguageState(storedLanguage);
     } else {
       const browserLanguage = navigator.language.split('-')[0];
-      setLanguageState(browserLanguage === 'es' ? 'es' : 'en');
+      const lang = browserLanguage === 'es' ? 'es' : 'en';
+      setLanguageState(lang);
+      setCookie('language', lang);
     }
   }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem('language', lang);
-    // Reload to apply new server-rendered translations
-    window.location.reload(); 
+    setCookie('language', lang, { path: '/' });
+    // Use startTransition to avoid abrupt re-renders while the new language loads.
+    startTransition(() => {
+        router.refresh();
+    });
   };
 
   return (

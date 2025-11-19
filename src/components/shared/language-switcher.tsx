@@ -4,6 +4,13 @@
 import { useLanguage } from '@/contexts/language-context';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Globe } from 'lucide-react';
 
 const LanguageSwitcher = () => {
   const { language, setLanguage } = useLanguage();
@@ -27,27 +34,27 @@ const LanguageSwitcher = () => {
     </svg>
   );
 
-  const flagClassName = "w-5 h-5 rounded-full object-cover";
+  const flagClassName = "w-5 h-auto rounded-sm object-cover";
 
   return (
     <div className="flex items-center gap-1">
       <Button
         variant={language === 'es' ? 'secondary' : 'ghost'}
-        size="icon"
+        size="sm"
         onClick={() => setLanguage('es')}
-        className={cn('transition-all', language === 'es' ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : '')}
+        className="px-2"
       >
         <SpainFlag className={flagClassName} />
-        <span className="sr-only">Español</span>
+        <span className="ml-2 hidden sm:inline">ES</span>
       </Button>
       <Button
         variant={language === 'en' ? 'secondary' : 'ghost'}
-        size="icon"
+        size="sm"
         onClick={() => setLanguage('en')}
-        className={cn('transition-all', language === 'en' ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : '')}
+        className="px-2"
       >
         <UKFlag className={flagClassName} />
-        <span className="sr-only">English</span>
+        <span className="ml-2 hidden sm:inline">EN</span>
       </Button>
     </div>
   );
