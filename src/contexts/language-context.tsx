@@ -15,18 +15,22 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>('es');
+  const [language, setLanguageState] = useState<Language>(() => {
+    // Set initial state from cookie on the client, if available
+    const storedLanguage = getCookie('language') as Language;
+    return storedLanguage && ['en', 'es'].includes(storedLanguage) ? storedLanguage : 'es';
+  });
   const router = useRouter();
 
   useEffect(() => {
+    // This effect runs only on the client side.
     const storedLanguage = getCookie('language') as Language;
-    if (storedLanguage && ['en', 'es'].includes(storedLanguage)) {
-      setLanguageState(storedLanguage);
-    } else {
-      const browserLanguage = navigator.language.split('-')[0];
-      const lang = browserLanguage === 'es' ? 'es' : 'en';
-      setLanguageState(lang);
-      setCookie('language', lang);
+    if (!storedLanguage) {
+        // If no cookie is set, detect browser language and set it.
+        const browserLanguage = navigator.language.split('-')[0];
+        const lang = browserLanguage === 'es' ? 'es' : 'en';
+        setLanguageState(lang);
+        setCookie('language', lang, { path: '/' });
     }
   }, []);
 
