@@ -23,12 +23,6 @@ const TestComponent: React.FC = () => {
   );
 };
 
-// Mock navigator.language to ensure consistent test results
-Object.defineProperty(navigator, "language", {
-    value: "es-ES",
-    configurable: true,
-});
-
 describe('LanguageProvider', () => {
   beforeEach(() => {
     mockRouterRefresh.mockClear();
@@ -36,7 +30,7 @@ describe('LanguageProvider', () => {
 
   it('should switch language and not refresh the page', () => {
     render(
-      <LanguageProvider>
+      <LanguageProvider initialLanguage="es">
         <TestComponent />
       </LanguageProvider>
     );
@@ -52,7 +46,7 @@ describe('LanguageProvider', () => {
 
   it('should not persist language between renders', () => {
     const { unmount } = render(
-      <LanguageProvider>
+      <LanguageProvider initialLanguage="es">
         <TestComponent />
       </LanguageProvider>
     );
@@ -63,7 +57,7 @@ describe('LanguageProvider', () => {
     unmount();
 
     render(
-        <LanguageProvider>
+        <LanguageProvider initialLanguage="es">
             <TestComponent />
         </LanguageProvider>
     );

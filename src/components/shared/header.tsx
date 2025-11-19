@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
@@ -19,7 +19,7 @@ const Header = () => {
   const translations = useTranslations();
   const { nav, hero } = translations;
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { href: '#about', label: nav.about },
     { href: '#services', label: nav.services },
     { href: '#ai-wellness', label: nav.ai_wellness },
@@ -27,14 +27,19 @@ const Header = () => {
     { href: '#testimonials', label: nav.testimonials },
     { href: '#blog', label: nav.blog },
     { href: '#contact', label: nav.contact },
-  ];
+  ], [nav]);
+
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 10);
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  const closeMobileMenu = useCallback(() => {
+    setMobileMenuOpen(false);
   }, []);
 
   const evaProfileImage = PlaceHolderImages.find(img => img.id === 'eva-profile');
@@ -94,7 +99,7 @@ const Header = () => {
                   <div className="flex flex-col h-full">
                     <div className="flex items-center justify-between p-4 border-b">
                       <span className="font-headline text-lg font-bold">Menu</span>
-                      <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
+                      <Button variant="ghost" size="icon" onClick={closeMobileMenu}>
                           <X className="h-6 w-6" />
                       </Button>
                     </div>
@@ -105,7 +110,7 @@ const Header = () => {
                             <Link
                               href={item.href}
                               className="text-lg font-semibold text-foreground/80 hover:text-primary"
-                              onClick={() => setMobileMenuOpen(false)}
+                              onClick={closeMobileMenu}
                             >
                               {item.label}
                             </Link>
