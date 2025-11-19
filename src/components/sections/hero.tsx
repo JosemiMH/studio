@@ -15,8 +15,9 @@ const HeroSection = () => {
   const translations = useTranslations();
   const { hero } = translations;
 
+  const heroImageId = language === 'es' ? 'hero-es' : 'hero-en';
   const heroImage = PlaceHolderImages.find(
-    (img) => img.id === 'hero-es'
+    (img) => img.id === heroImageId
   );
 
   return (
