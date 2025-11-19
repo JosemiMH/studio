@@ -76,52 +76,52 @@ const Header = () => {
             ))}
           </nav>
           
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <LanguageSwitcher />
-            <AppointmentBooking trigger={
-                <Button size="sm">{hero.cta_contact}</Button>
-            } />
-          </div>
-
-          <div className="lg:hidden flex items-center gap-2">
-            <LanguageSwitcher />
-            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] bg-background p-0">
-                <div className="flex flex-col h-full">
-                  <div className="flex items-center justify-between p-4 border-b">
-                     <span className="font-headline text-lg font-bold">Menu</span>
-                     <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
-                        <X className="h-6 w-6" />
-                     </Button>
-                  </div>
-                  <nav className="flex-grow p-4">
-                    <ul className="space-y-4">
-                      {navItems.map((item) => (
-                        <li key={item.label}>
-                          <Link
-                            href={item.href}
-                            className="text-lg font-semibold text-foreground/80 hover:text-primary"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {item.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </nav>
-                   <div className="p-4 border-t">
-                     <AppointmentBooking trigger={
-                        <Button className="w-full">{hero.cta_contact}</Button>
-                     }/>
+            <div className="hidden lg:flex">
+              <AppointmentBooking trigger={
+                  <Button size="sm">{hero.cta_contact}</Button>
+              } />
+            </div>
+            <div className="lg:hidden">
+              <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] bg-background p-0">
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center justify-between p-4 border-b">
+                      <span className="font-headline text-lg font-bold">Menu</span>
+                      <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
+                          <X className="h-6 w-6" />
+                      </Button>
                     </div>
-                </div>
-              </SheetContent>
-            </Sheet>
+                    <nav className="flex-grow p-4">
+                      <ul className="space-y-4">
+                        {navItems.map((item) => (
+                          <li key={item.label}>
+                            <Link
+                              href={item.href}
+                              className="text-lg font-semibold text-foreground/80 hover:text-primary"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                    <div className="p-4 border-t">
+                      <AppointmentBooking trigger={
+                          <Button className="w-full">{hero.cta_contact}</Button>
+                      }/>
+                      </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </div>

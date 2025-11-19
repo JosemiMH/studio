@@ -35,6 +35,7 @@ const LanguageSwitcher = () => {
         size="sm"
         onClick={() => setLanguage('es')}
         className="px-2"
+        aria-label="Switch to Spanish"
       >
         <SpainFlag className={flagClassName} />
         <span className="ml-2 hidden sm:inline">ES</span>
@@ -44,6 +45,7 @@ const LanguageSwitcher = () => {
         size="sm"
         onClick={() => setLanguage('en')}
         className="px-2"
+        aria-label="Switch to English"
       >
         <UKFlag className={flagClassName} />
         <span className="ml-2 hidden sm:inline">EN</span>
