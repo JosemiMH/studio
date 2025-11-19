@@ -219,7 +219,7 @@ const blog = [
         category: { es: 'Gestión', en: 'Management' },
         title: { es: '10 KPIs esenciales para gestionar un SPA exitoso', en: '10 Essential KPIs for Managing a Successful SPA' },
         excerpt: { es: 'Descubre los indicadores clave que te ayudarán a medir y mejorar el rendimiento de tu negocio de bienestar.', en: 'Discover the key performance indicators that will help you measure and improve your wellness business performance.'},
-        readingTime: { es: 8, en: 8 },
+        readingTime: 8,
         date: '2024-05-15',
     },
     {
@@ -228,7 +228,7 @@ const blog = [
         category: { es: 'Revenue', en: 'Revenue' },
         title: { es: 'Cómo implementar Revenue Management en tu área wellness', en: 'How to Implement Revenue Management in Your Wellness Area' },
         excerpt: { es: 'Una guía práctica para aplicar estrategias de precios dinámicos y optimizar tus ingresos.', en: 'A practical guide to applying dynamic pricing strategies and optimizing your revenue.'},
-        readingTime: { es: 12, en: 12 },
+        readingTime: 12,
         date: '2024-04-22',
     },
     {
@@ -237,7 +237,7 @@ const blog = [
         category: { es: 'Tendencias', en: 'Trends' },
         title: { es: 'Tendencias wellness 2024 en hotelería de lujo', en: 'Wellness Trends 2024 in Luxury Hospitality' },
         excerpt: { es: 'Exploramos las innovaciones que están marcando el futuro de los spas en hoteles de alta gama.', en: 'We explore the innovations that are shaping the future of spas in high-end hotels.'},
-        readingTime: { es: 7, en: 7 },
+        readingTime: 7,
         date: '2024-03-30',
     },
     {
@@ -246,13 +246,13 @@ const blog = [
         category: { es: 'Experiencia Cliente', en: 'Customer Experience' },
         title: { es: 'El arte de crear experiencias memorables en el SPA', en: 'The Art of Creating Memorable SPA Experiences' },
         excerpt: { es: 'Más allá de los tratamientos, aprende a diseñar un viaje inolvidable para tus clientes.', en: 'Beyond treatments, learn to design an unforgettable journey for your clients.'},
-        readingTime: { es: 9, en: 9 },
+        readingTime: 9,
         date: '2024-02-18',
     }
 ];
 
 const linkedin = {
-    title: { es: "Gerente de Proyectos SPA & Wellness", en: "SPA & Wellness Project Manager"},
+    title: { es: "SPA & Wellness Project Manager – Especialista en Optimización de Ingresos", en: "SPA & Wellness Project Manager – Revenue Optimization Specialist"},
     location: { es: "España", en: "Spain" },
     experience: [
         {
@@ -288,7 +288,7 @@ const processData = (lang: Language) => ({
     services: services.map(s => ({...s, title: s.title[lang], features: s.features[lang]})),
     portfolio: portfolio.map(p => ({...p, title: p.title[lang], description: p.description[lang], results: p.results[lang]})),
     testimonials: testimonials.map(t => ({...t, company: t.company[lang], quote: t.quote[lang]})),
-    blog: blog.map(b => ({...b, category: b.category[lang], title: b.title[lang], excerpt: b.excerpt[lang], readingTime: b.readingTime[lang]})),
+    blog: blog.map(b => ({...b, category: b.category[lang], title: b.title[lang], excerpt: b.excerpt[lang]})),
     linkedin: {
         title: linkedin.title[lang],
         location: linkedin.location[lang],

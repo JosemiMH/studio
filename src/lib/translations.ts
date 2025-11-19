@@ -21,7 +21,7 @@ const es = {
   },
   about: {
     title: "Sobre Eva Pérez",
-    subtitle: "Gerente de Proyectos SPA & Wellness – Especialista en Optimización de Ingresos",
+    subtitle: "SPA & Wellness Project Manager – Especialista en Optimización de Ingresos",
     p1: "Con más de 20 años de dedicación al sector wellness de lujo, he liderado la conceptualización, apertura y gestión de spas en prestigiosos hoteles a nivel internacional. Mi pasión es transformar áreas de bienestar en unidades de negocio rentables y memorables.",
     p2: "Mi enfoque se centra en la optimización de ingresos (Revenue Management), la formación de equipos de alto rendimiento y la creación de experiencias de cliente excepcionales. Soy una estratega que une la excelencia operativa con una visión de negocio innovadora.",
     stats: {
@@ -243,7 +243,7 @@ const en = {
   linkedin: {
     title: "Connect with me on LinkedIn",
     experience: "Experience",
-education: "Education",
+    education: "Education",
     skills: "Top Skills",
     view_profile: "View full profile",
     data: data.en.linkedin
