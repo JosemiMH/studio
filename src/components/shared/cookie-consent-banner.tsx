@@ -1,16 +1,16 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/language-context";
 import { Cookie } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useTranslations } from "@/contexts/translations-context";
 
 const CookieConsentBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { translations } = useLanguage();
+  const translations = useTranslations();
   const { cookie_banner, footer } = translations;
 
   useEffect(() => {

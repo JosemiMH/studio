@@ -3,12 +3,12 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { useLanguage } from '@/contexts/language-context';
 import Header from '@/components/shared/header';
 import Footer from '@/components/shared/footer';
+import { useTranslations } from '@/contexts/translations-context';
 
 export default function NotFound() {
-  const { not_found } = useLanguage().translations;
+  const { not_found } = useTranslations();
 
   return (
     <>

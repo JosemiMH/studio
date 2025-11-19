@@ -9,9 +9,11 @@ import { Badge } from '@/components/ui/badge';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import SectionWrapper from '../shared/section-wrapper';
 import { Clock } from 'lucide-react';
+import { useTranslations } from '@/contexts/translations-context';
 
 const BlogSection = () => {
-  const { translations, language } = useLanguage();
+  const { language } = useLanguage();
+  const translations = useTranslations();
   const { blog } = translations;
 
   return (
@@ -56,7 +58,7 @@ const BlogSection = () => {
                     </Button>
                     <div className="flex items-center text-sm text-muted-foreground">
                         <Clock className="w-4 h-4 mr-1.5" />
-                        {post.readingTime} {blog.reading_time}
+                        {post.readingTime}
                     </div>
                 </CardFooter>
               </Card>

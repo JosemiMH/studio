@@ -3,12 +3,13 @@
 
 import Link from 'next/link';
 import { Linkedin } from 'lucide-react';
-import { useLanguage } from '@/contexts/language-context';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { useTranslations } from '@/contexts/translations-context';
 
 const Footer = () => {
-  const { nav, footer } = useLanguage().translations;
+  const translations = useTranslations();
+  const { nav, footer } = translations;
 
   const quickLinks = [
     { href: '#about', label: nav.about },

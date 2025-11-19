@@ -4,19 +4,19 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, Briefcase, Star, Lightbulb, Bot, Mail, User, Phone, Building } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { useLanguage } from '@/contexts/language-context';
 import LanguageSwitcher from './language-switcher';
 import { cn } from '@/lib/utils';
 import AppointmentBooking from './appointment-booking';
+import { useTranslations } from '@/contexts/translations-context';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { translations } = useLanguage();
+  const translations = useTranslations();
   const { nav, hero } = translations;
 
   const navItems = [

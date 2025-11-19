@@ -2,11 +2,11 @@
 "use client";
 
 import Image from 'next/image';
-import { useLanguage } from '@/contexts/language-context';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import SectionWrapper from '../shared/section-wrapper';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from '@/contexts/translations-context';
 
 const AnimatedCounter = ({ value }: { value: number }) => {
     const [count, setCount] = useState(0);
@@ -52,7 +52,7 @@ const AnimatedCounter = ({ value }: { value: number }) => {
 }
 
 const AboutSection = () => {
-  const { about } = useLanguage().translations;
+  const { about } = useTranslations();
   const profileImage = PlaceHolderImages.find((img) => img.id === 'eva-profile');
   const conferenceImage = PlaceHolderImages.find((img) => img.id === 'eva-conference');
 

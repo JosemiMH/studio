@@ -1,11 +1,10 @@
-
-"use client";
-
-import { useLanguage } from '@/contexts/language-context';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Briefcase, TrendingUp, Users, Rocket, LucideIcon } from 'lucide-react';
 import SectionWrapper from '../shared/section-wrapper';
 import { Button } from '../ui/button';
+import { AllTranslations } from '@/lib/translations';
+
+type ServicesTranslations = AllTranslations['es']['services'];
 
 const iconMap: { [key: string]: LucideIcon } = {
   Briefcase,
@@ -14,22 +13,21 @@ const iconMap: { [key: string]: LucideIcon } = {
   Rocket,
 };
 
-const ServicesSection = () => {
-  const { services } = useLanguage().translations;
+const ServicesSection = ({ translations }: { translations: ServicesTranslations }) => {
 
   return (
     <SectionWrapper id="services" className="bg-background/70 py-24 sm:py-32">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            {services.title}
+            {translations.title}
           </h2>
           <p className="mt-4 text-lg leading-8 text-muted-foreground">
-            {services.subtitle}
+            {translations.subtitle}
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {services.list.map((service, index) => {
+          {translations.list.map((service, index) => {
             const Icon = iconMap[service.icon];
             return (
               <Card key={index} className="flex flex-col text-center hover:shadow-xl transition-shadow duration-300">
@@ -53,7 +51,7 @@ const ServicesSection = () => {
                 </CardContent>
                 <div className="p-6 pt-0">
                   <Button variant="outline" asChild>
-                    <a href="#contact">{services.cta}</a>
+                    <a href="#contact">{translations.cta}</a>
                   </Button>
                 </div>
               </Card>

@@ -1,16 +1,14 @@
 
 "use client";
 
-import React, { createContext, useState, useContext, useEffect, useMemo } from 'react';
-import { translations, TranslationKeys, AllTranslations } from '@/lib/translations';
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import { AllTranslations } from '@/lib/translations';
 
-type Language = 'en' | 'es';
+export type Language = 'en' | 'es';
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (language: Language) => void;
-  t: (key: TranslationKeys) => string;
-  translations: AllTranslations['en' | 'es'];
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -31,25 +29,12 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem('language', lang);
+    // Reload to apply new server-rendered translations
+    window.location.reload(); 
   };
-  
-  const t = useMemo(() => (key: TranslationKeys) => {
-    const keys = key.split('.') as (keyof AllTranslations['es'])[];
-    let result: any = translations[language];
-    for (const k of keys) {
-      if (result && typeof result === 'object' && k in result) {
-        result = result[k];
-      } else {
-        return key; // Return key if not found
-      }
-    }
-    return result as string;
-  }, [language]);
-
-  const currentTranslations = useMemo(() => translations[language], [language]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, translations: currentTranslations }}>
+    <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

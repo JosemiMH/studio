@@ -1,10 +1,10 @@
 
 "use client";
 
-import { useLanguage } from '@/contexts/language-context';
+import { useTranslations } from '@/contexts/translations-context';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Briefcase, GraduationCap, Star, Linkedin } from 'lucide-react';
 import SectionWrapper from '../shared/section-wrapper';
@@ -12,7 +12,7 @@ import { Separator } from '../ui/separator';
 import { Badge } from '../ui/badge';
 
 const LinkedInSection = () => {
-  const { linkedin } = useLanguage().translations;
+  const { linkedin } = useTranslations();
   const profileImage = PlaceHolderImages.find((img) => img.id === 'eva-profile');
 
   return (

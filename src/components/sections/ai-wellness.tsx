@@ -1,13 +1,11 @@
-
-"use client";
-
-import { useLanguage } from '@/contexts/language-context';
 import { Button } from '@/components/ui/button';
 import SectionWrapper from '../shared/section-wrapper';
 import { BrainCircuit } from 'lucide-react';
+import type { AllTranslations } from '@/lib/translations';
 
-const AiWellnessSection = () => {
-  const { ai_wellness } = useLanguage().translations;
+type AiWellnessTranslations = AllTranslations['es']['ai_wellness'];
+
+const AiWellnessSection = ({ translations }: { translations: AiWellnessTranslations }) => {
 
   return (
     <SectionWrapper id="ai-wellness" className="py-24 sm:py-32">
@@ -15,15 +13,15 @@ const AiWellnessSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="text-center lg:text-left">
             <h2 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              {ai_wellness.title}
+              {translations.title}
             </h2>
             <p className="mt-6 text-lg text-muted-foreground">
-              {ai_wellness.content}
+              {translations.content}
             </p>
             <div className="mt-8 text-left">
-              <h3 className="font-semibold text-foreground mb-4">{ai_wellness.benefits_title}</h3>
+              <h3 className="font-semibold text-foreground mb-4">{translations.benefits_title}</h3>
               <ul className="space-y-3">
-                {ai_wellness.benefits.map((benefit: string, index: number) => (
+                {translations.benefits.map((benefit: string, index: number) => (
                   <li key={index} className="flex items-start">
                     <svg className="h-6 w-6 text-primary flex-shrink-0 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -35,7 +33,7 @@ const AiWellnessSection = () => {
             </div>
             <div className="mt-10">
                 <Button asChild size="lg">
-                    <a href="#contact">{ai_wellness.cta}</a>
+                    <a href="#contact">{translations.cta}</a>
                 </Button>
             </div>
           </div>

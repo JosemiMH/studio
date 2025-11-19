@@ -1,7 +1,6 @@
 
 "use client";
 
-import { useLanguage } from '@/contexts/language-context';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -15,19 +14,21 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import SectionWrapper from '../shared/section-wrapper';
 import Autoplay from "embla-carousel-autoplay";
+import { AllTranslations } from '@/lib/translations';
 
-const TestimonialsSection = () => {
-  const { testimonials } = useLanguage().translations;
+type TestimonialsTranslations = AllTranslations['es']['testimonials'];
+
+const TestimonialsSection = ({ translations }: { translations: TestimonialsTranslations }) => {
 
   return (
     <SectionWrapper id="testimonials" className="bg-background/70 py-24 sm:py-32">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            {testimonials.title}
+            {translations.title}
           </h2>
           <p className="mt-4 text-lg leading-8 text-muted-foreground">
-            {testimonials.subtitle}
+            {translations.subtitle}
           </p>
         </div>
         <Carousel
@@ -43,7 +44,7 @@ const TestimonialsSection = () => {
           className="w-full max-w-4xl mx-auto mt-16"
         >
           <CarouselContent>
-            {testimonials.items.map((testimonial: any, index: number) => {
+            {translations.items.map((testimonial: any, index: number) => {
               const testimonialImage = PlaceHolderImages.find(img => img.id === testimonial.image);
               return (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">

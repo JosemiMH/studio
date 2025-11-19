@@ -8,9 +8,11 @@ import { useLanguage } from '@/contexts/language-context';
 import { TrendingUp, Phone } from 'lucide-react';
 import SectionWrapper from '../shared/section-wrapper';
 import AppointmentBooking from '../shared/appointment-booking';
+import { useTranslations } from '@/contexts/translations-context';
 
 const HeroSection = () => {
-  const { language, translations } = useLanguage();
+  const { language } = useLanguage();
+  const translations = useTranslations();
   const { hero } = translations;
 
   const heroImage = PlaceHolderImages.find(

@@ -25,16 +25,16 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Calendar } from "@/components/ui/calendar";
-import { useLanguage } from '@/contexts/language-context';
 import { bookAppointment } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { Textarea } from '../ui/textarea';
 import { format } from 'date-fns';
+import { useTranslations } from '@/contexts/translations-context';
 
 const availableTimes = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00"];
 
 const AppointmentBooking = ({ trigger }: { trigger: React.ReactNode }) => {
-  const { appointment, services } = useLanguage().translations;
+  const { appointment, services } = useTranslations();
   const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
 

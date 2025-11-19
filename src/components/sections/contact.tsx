@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useLanguage } from '@/contexts/language-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -16,9 +15,10 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { submitContactForm } from "@/app/actions";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
+import { useTranslations } from "@/contexts/translations-context";
 
 const ContactSection = () => {
-  const { contact, footer } = useLanguage().translations;
+  const { contact, footer } = useTranslations();
   const { toast } = useToast();
 
   const ContactFormSchema = z.object({

@@ -6,11 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Bot, X, CornerDownLeft, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useLanguage } from "@/contexts/language-context";
 import { aiChatbotAssistance } from "@/ai/flows/ai-chatbot-assistance";
 import { Card } from "../ui/card";
 import { ScrollArea } from "../ui/scroll-area";
 import { Avatar, AvatarFallback } from "../ui/avatar";
+import { useTranslations } from "@/contexts/translations-context";
 
 interface Message {
   text: string;
@@ -22,7 +22,8 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { chatbot } = useLanguage().translations;
+  const translations = useTranslations();
+  const { chatbot } = translations;
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

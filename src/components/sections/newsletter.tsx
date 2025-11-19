@@ -3,15 +3,15 @@
 
 import { useActionState } from "react";
 import { useEffect } from "react";
-import { useLanguage } from '@/contexts/language-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from "@/hooks/use-toast";
 import { subscribeToNewsletter } from "@/app/actions";
 import SectionWrapper from '../shared/section-wrapper';
+import { useTranslations } from "@/contexts/translations-context";
 
 const NewsletterSection = () => {
-  const { newsletter } = useLanguage().translations;
+  const { newsletter } = useTranslations();
   const { toast } = useToast();
   const [state, formAction] = useActionState(subscribeToNewsletter, { message: "", errors: {}, success: false });
 
