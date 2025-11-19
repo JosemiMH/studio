@@ -16,7 +16,7 @@ const LinkedInSection = () => {
   const profileImage = PlaceHolderImages.find((img) => img.id === 'eva-profile');
 
   return (
-    <SectionWrapper className="bg-background/70 py-24 sm:py-32">
+    <SectionWrapper id="linkedin" className="bg-background/70 py-24 sm:py-32">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl">
            <div className="text-center mb-12">
