@@ -10,10 +10,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Poppins', 'sans-serif'],
         headline: ['Playfair Display', 'serif'],
-        decorative: ['Cormorant Garamond', 'serif'],
-        code: ['monospace'],
+        body: ['Poppins', 'sans-serif'],
+        cormorant: ['Cormorant Garamond', 'serif'],
       },
       colors: {
         background: 'hsl(var(--background))',
