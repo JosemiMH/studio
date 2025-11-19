@@ -2,17 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Poppins', sans-serif;
-}
-
 @layer base {
   :root {
-    --background: 120 11% 95%; /* Sage Light */
+    --background: 0 0% 98%; /* White smoke */
     --foreground: 0 0% 20%; /* Charcoal */
-    --card: 120 11% 95%;
+    --card: 0 0% 100%;
     --card-foreground: 0 0% 20%;
-    --popover: 120 11% 95%;
+    --popover: 0 0% 100%;
     --popover-foreground: 0 0% 20%;
     --primary: 173 52% 49%; /* Turquesa */
     --primary-foreground: 0 0% 100%;
@@ -36,18 +32,18 @@ body {
   }
 
   .dark {
-    --background: 0 0% 13%; /* Charcoal Dark */
-    --foreground: 120 11% 95%; /* Sage Light */
-    --card: 0 0% 16%;
-    --card-foreground: 120 11% 95%;
-    --popover: 0 0% 13%;
-    --popover-foreground: 120 11% 95%;
+    --background: 0 0% 15%; /* Charcoal Dark */
+    --foreground: 0 0% 98%; /* Off-white */
+    --card: 0 0% 18%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 98%;
     --primary: 173 52% 49%; /* Turquesa */
     --primary-foreground: 0 0% 10%;
     --secondary: 120 11% 30%; /* Darker Sage */
-    --secondary-foreground: 120 11% 95%;
+    --secondary-foreground: 0 0% 98%;
     --muted: 120 11% 25%;
-    --muted-foreground: 120 10% 65%;
+    --muted-foreground: 0 0% 65%;
     --accent: 39 44% 69%; /* Dorado */
     --accent-foreground: 0 0% 10%;
     --destructive: 0 62.8% 30.6%;
@@ -69,7 +65,7 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
